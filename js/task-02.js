@@ -7,7 +7,11 @@ const ingredients = [
   'Приправы',
 ];
 
-const plaseForList = document.querySelector('#ingredients');
 
-
-const list = ingredients.forEach(ingredient => console.log(ingredient));
+const listEl = ingredients.forEach(ingredient => {
+  const plaseForList = document.querySelector('#ingredients');
+  const list = document.createElement('li');
+  const text = document.createTextNode(ingredient);
+  list.appendChild(text);
+  plaseForList.appendChild(list);
+});
