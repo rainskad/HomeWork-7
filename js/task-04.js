@@ -7,7 +7,7 @@ const CounterPlugin = function ({
     this._step = step;
     this._refs = this._getRefs(rootSelector);
     this._bindEvents();
-    this.updateValueUI();
+    this.counterValue();
 };
 
 CounterPlugin.prototype._getRefs = function (rootSelector) {
@@ -24,17 +24,17 @@ CounterPlugin.prototype._bindEvents = function () {
     this._refs.incrementBtn.addEventListener('click', () => {
         console.log('🚀 - this._refs.incrementBtn.addEventListener - this', this);
         this.increment();
-        this.updateValueUI();
+        this.counterValue();
     });
 
     this._refs.decrementBtn.addEventListener('click', () => {
         console.log('🚀 - this._refs.decrementBtn.addEventListener - this', this);
         this.decrement();
-        this.updateValueUI();
+        this.counterValue();
     });
 }
 
-CounterPlugin.prototype.updateValueUI = function () {
+CounterPlugin.prototype.counterValue = function () {
     this._refs.value.textContent = this._value;
 };
 
@@ -46,5 +46,5 @@ CounterPlugin.prototype.decrement = function () {
     this._value -= this._step;
 };
 
-const counter = new CounterPlugin({ rootSelector: '#counter', step: 2, initialValue: 100 });
+const counter = new CounterPlugin({ rootSelector: '#counter', step: 1, initialValue: 0 });
 console.log('🚀 - counter', counter);
